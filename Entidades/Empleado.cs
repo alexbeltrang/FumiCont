@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace FumiCont.Entidades
 {
-    [Table("Lotess")]
+    [Table("Empleado")]
     public class Empleado
     {
-        [PrimaryKey, AutoIncrement, Column("LotesId")]
+        [PrimaryKey, AutoIncrement, Column("EmpleadoId")]
         public int EmpleadoId { get; set; }
         [MaxLength(150)]
         public string NombreEmpleado { get; set; }
