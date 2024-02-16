@@ -638,5 +638,71 @@ namespace FumiCont.Database
             }
 
         }
+
+
+        public static List<Empleado> getListaEmpleadosAll(bool GetAll, bool GetActive, bool GetDelete)
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+                {
+                    var query = new SQLiteCommand(conn);
+                    query.CommandText = "SELECT	* FROM Empleados ";
+                    if (GetAll)
+                    {
+                        GetActive = false;
+                        GetDelete = false;
+                    }
+                    else if (GetActive)
+                    {
+                        query.CommandText = query.CommandText + "WHERE IsDelete = 0";
+                    }
+                    else if (GetDelete)
+                    {
+                        query.CommandText = query.CommandText + "WHERE IsDelete = 1";
+                    }
+                    var result = query.ExecuteQuery<Empleado>().ToList();
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+        public static Empleado getEmpleadoxId(int EmpleadoId)
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+                {
+                    var query = new SQLiteCommand(conn);
+                    query.CommandText = "SELECT * FROM Empleados where EmpleadoId = " + EmpleadoId.ToString();
+                    var result = query.ExecuteQuery<Empleado>().FirstOrDefault();
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
     }
 }

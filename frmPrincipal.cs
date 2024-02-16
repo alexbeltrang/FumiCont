@@ -230,20 +230,20 @@ namespace FumiCont
                 //            }
                 //            break;
                 //        }
-                //    case "EMPLEADOS":
-                //        {
-                //            if (clsConnection.blnVentanasEnbebidas)
-                //            {
-                //                frmEmpleados objFormulario = new frmEmpleados();
-                //                cargaFormulario(objFormulario);
-                //            }
-                //            else
-                //            {
-                //                frmEmpleados FrmEmpleados = new frmEmpleados();
-                //                FrmEmpleados.Show();
-                //            }
-                //            break;
-                //        }
+                case "EMPLEADOS":
+                    {
+                        if (clsConnection.blnVentanasEnbebidas)
+                        {
+                            frmEmpleados objFormulario = new frmEmpleados();
+                            cargaFormulario(objFormulario);
+                        }
+                        else
+                        {
+                            frmEmpleados FrmEmpleados = new frmEmpleados();
+                            FrmEmpleados.Show();
+                        }
+                        break;
+                    }
                 //    case "SALIDAS DE INVENTARIO":
                 //        {
                 //            if (clsConnection.blnVentanasEnbebidas)
@@ -472,16 +472,16 @@ namespace FumiCont
 
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (clsConnection.blnVentanasEnbebidas)
-            //{
-            //    frmEmpleados objFormulario = new frmEmpleados();
-            //    cargaFormulario(objFormulario);
-            //}
-            //else
-            //{
-            //    frmEmpleados objFormulario = new frmEmpleados();
-            //    objFormulario.Show();
-            //}
+            if (clsConnection.blnVentanasEnbebidas)
+            {
+                frmEmpleados objFormulario = new frmEmpleados();
+                cargaFormulario(objFormulario);
+            }
+            else
+            {
+                frmEmpleados objFormulario = new frmEmpleados();
+                objFormulario.Show();
+            }
         }
 
         private void salidasDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
