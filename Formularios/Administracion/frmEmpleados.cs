@@ -95,68 +95,68 @@ namespace FumiCont.Formularios.Administracion
 
         private void btnGrabar_Click(object sender, EventArgs e)
         {
-            //if (validaCampos())
-            //{
-            //    clsEmpleados clsEmpleados = new clsEmpleados();
-            //    if (GestionEmpleados != null)
-            //    {
-            //        GestionEmpleados.NombreEmpleado = txtNombreEmpleado.Text;
-            //        GestionEmpleados.TelefonoCelularEmpleado = txtTelefonoCelular.Text;
-            //        if (rbnActivo.Checked)
-            //        {
-            //            GestionEmpleados.isDeleted = false;
-            //        }
-            //        else if (rbnInactivo.Checked)
-            //        {
-            //            GestionEmpleados.isDeleted = true;
-            //        }
-            //        var res = clsEmpleados.iuEmpleados(GestionEmpleados, strConexion);
-            //        if (objConexion.IsNumeric(res))
-            //        {
-            //            GestionEmpleados = null;
-            //            MessageBox.Show("Registro Actualizado exitosamente", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            //        }
-            //        else
-            //        {
-            //            GestionEmpleados = null;
-            //            MessageBox.Show(res, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        bool activo = false;
-            //        if (rbnActivo.Checked)
-            //        {
-            //            activo = false;
-            //        }
-            //        else if (rbnInactivo.Checked)
-            //        {
-            //            activo = true;
-            //        }
+            if (validaCampos())
+            {
+                //    clsEmpleados clsEmpleados = new clsEmpleados();
+                //    if (GestionEmpleados != null)
+                //    {
+                //        GestionEmpleados.NombreEmpleado = txtNombreEmpleado.Text;
+                //        GestionEmpleados.TelefonoCelularEmpleado = txtTelefonoCelular.Text;
+                //        if (rbnActivo.Checked)
+                //        {
+                //            GestionEmpleados.isDeleted = false;
+                //        }
+                //        else if (rbnInactivo.Checked)
+                //        {
+                //            GestionEmpleados.isDeleted = true;
+                //        }
+                //        var res = clsEmpleados.iuEmpleados(GestionEmpleados, strConexion);
+                //        if (objConexion.IsNumeric(res))
+                //        {
+                //            GestionEmpleados = null;
+                //            MessageBox.Show("Registro Actualizado exitosamente", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                //        }
+                //        else
+                //        {
+                //            GestionEmpleados = null;
+                //            MessageBox.Show(res, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        bool activo = false;
+                //        if (rbnActivo.Checked)
+                //        {
+                //            activo = false;
+                //        }
+                //        else if (rbnInactivo.Checked)
+                //        {
+                //            activo = true;
+                //        }
 
 
 
-            //        Empleados empleados = new Empleados();
-            //        empleados.isDeleted = activo;
-            //        empleados.EmpleadoId = 0;
-            //        empleados.NombreEmpleado = txtNombreEmpleado.Text;
-            //        empleados.TelefonoCelularEmpleado = txtTelefonoCelular.Text;
+                //        Empleados empleados = new Empleados();
+                //        empleados.isDeleted = activo;
+                //        empleados.EmpleadoId = 0;
+                //        empleados.NombreEmpleado = txtNombreEmpleado.Text;
+                //        empleados.TelefonoCelularEmpleado = txtTelefonoCelular.Text;
 
-            //        var res = clsEmpleados.iuEmpleados(empleados, strConexion);
-            //        if (objConexion.IsNumeric(res))
-            //        {
-            //            GestionEmpleados = null;
-            //            MessageBox.Show("Registro creado exitosamente", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            //        }
-            //        else
-            //        {
-            //            GestionEmpleados = null;
-            //            MessageBox.Show(res, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-            //        }
-            //    }
-            //    limpiaCampos();
-            //    llenaGrilla();
-            //}
+                //        var res = clsEmpleados.iuEmpleados(empleados, strConexion);
+                //        if (objConexion.IsNumeric(res))
+                //        {
+                //            GestionEmpleados = null;
+                //            MessageBox.Show("Registro creado exitosamente", "Registro", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                //        }
+                //        else
+                //        {
+                //            GestionEmpleados = null;
+                //            MessageBox.Show(res, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                //        }
+                //    }
+                //    limpiaCampos();
+                //    llenaGrilla();
+            }
         }
 
         private void txtTelefonoCelular_KeyPress(object sender, KeyPressEventArgs e)
