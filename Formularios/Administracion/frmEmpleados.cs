@@ -37,7 +37,7 @@ namespace FumiCont.Formularios.Administracion
         private void llenaGrilla()
         {
 
-            List<Empleado> Empleados = DatabaseQueryLDB.getListaEmpleadosAll(true, false, false);
+            List<Empleado> Empleados = DatabaseHelper.Read<Empleado>().ToList();
             dtgEmpleados.DataSource = Empleados;
         }
 
@@ -55,7 +55,7 @@ namespace FumiCont.Formularios.Administracion
             {
 
                 intEmpleadoId = Convert.ToInt32(dtgEmpleados.Rows[e.RowIndex].Cells["EmpleadoId"].Value.ToString());
-                GestionEmpleados = DatabaseQueryLDB.getEmpleadoxId(intEmpleadoId);
+                GestionEmpleados = DatabaseHelper.Read<Empleado>().Where(x => x.EmpleadoId == intEmpleadoId).FirstOrDefault();
                 txtNombreEmpleado.Text = GestionEmpleados.NombreEmpleado;
                 txtTelefonoCelular.Text = GestionEmpleados.TelefonoCelularEmpleado;
 

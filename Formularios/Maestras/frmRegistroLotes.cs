@@ -33,7 +33,7 @@ namespace FumiCont.Formularios.Maestras
 
         private void llenaGrilla()
         {
-            List<Lote> Lotes = DatabaseQueryLDB.getListaLotesAll(true, false, false);
+            List<Lote> Lotes = DatabaseHelper.Read<Lote>().ToList();
             List<Lote> LotesMasterEdit = new List<Lote>();
             foreach (var itemLote in Lotes)
             {
@@ -58,7 +58,7 @@ namespace FumiCont.Formularios.Maestras
             if (e.RowIndex >= 0)
             {
 
-                GestionLotes = DatabaseQueryLDB.getLotexId(Convert.ToInt32(dtgLotes.Rows[e.RowIndex].Cells["LoteId"].Value.ToString()));
+                GestionLotes = DatabaseHelper.Read<Lote>().Where(x => x.LoteId == Convert.ToInt32(dtgLotes.Rows[e.RowIndex].Cells["LoteId"].Value.ToString())).FirstOrDefault();
                 txtNombreLote.Text = GestionLotes.NombreLote;
 
                 if (GestionLotes.isDelete)

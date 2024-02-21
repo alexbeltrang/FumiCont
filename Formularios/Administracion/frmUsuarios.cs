@@ -42,7 +42,7 @@ namespace FumiCont.Formularios.Administracion
             perfiles.PerfilId = 0;
             perfiles.NombrePerfil = "Seleccione...";
 
-            List<Perfil> Listperfiles = DatabaseQueryLDB.getListaPerfilesCombos();
+            List<Perfil> Listperfiles = DatabaseHelper.Read<Perfil>().Where(x => x.isDelete == false).ToList();
             Listperfiles.Add(perfiles);
             Listperfiles = Listperfiles.OrderBy(y => y.PerfilId).ToList();
 
@@ -53,7 +53,8 @@ namespace FumiCont.Formularios.Administracion
         }
         private void llenaGrilla()
         {
-            List<Usuario> usuarios = DatabaseQueryLDB.getListaUsuarios();
+            List<Usuario> usuarios = DatabaseHelper.Read<Usuario>().ToList();
+
             List<UsuariosMasterEdit> usuariosMasterEdit = new List<UsuariosMasterEdit>();
             foreach (var itemUsu in usuarios)
             {
@@ -194,8 +195,8 @@ namespace FumiCont.Formularios.Administracion
         {
             if (e.RowIndex >= 0)
             {
+                GestionUsuarios = DatabaseHelper.Read<Usuario>().Where(x => x.idUser == Convert.ToInt32(dtgUsuarios.Rows[e.RowIndex].Cells["UsuarioId"].Value.ToString())).FirstOrDefault();
 
-                GestionUsuarios = DatabaseQueryLDB.getUsuarioxId(Convert.ToInt32(dtgUsuarios.Rows[e.RowIndex].Cells["UsuarioId"].Value.ToString()));
                 txtApellidos.Text = GestionUsuarios.Apellidos;
                 txtEmail.Text = GestionUsuarios.Email;
                 txtLogin.Text = FunctionsEncrip.Cifrado(2, GestionUsuarios.UserName);

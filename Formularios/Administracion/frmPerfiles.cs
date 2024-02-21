@@ -33,7 +33,7 @@ namespace FumiCont.Formularios.Administracion
 
         private void llenaGrilla()
         {
-            List<Perfil> Perfiles = DatabaseQueryLDB.getListaPerfilesAll();
+            List<Perfil> Perfiles = DatabaseHelper.Read<Perfil>().ToList();
             List<Perfil> PerfilesMasterEdit = new List<Perfil>();
             foreach (var itemMedida in Perfiles)
             {
@@ -58,7 +58,9 @@ namespace FumiCont.Formularios.Administracion
             if (e.RowIndex >= 0)
             {
 
-                GestionPerfiles = DatabaseQueryLDB.getListaPerfilesxId(Convert.ToInt32(dtgPerfiles.Rows[e.RowIndex].Cells["PerfilId"].Value.ToString()));
+                GestionPerfiles = DatabaseHelper.Read<Perfil>().Where(x => x.PerfilId == Convert.ToInt32(dtgPerfiles.Rows[e.RowIndex].Cells["PerfilId"].Value.ToString())).FirstOrDefault();
+
+
                 txtNombrePerfil.Text = GestionPerfiles.NombrePerfil;
 
                 if (GestionPerfiles.isDelete)
@@ -124,7 +126,8 @@ namespace FumiCont.Formularios.Administracion
                     if (res)
                     {
                         GestionPerfiles = null;
-                        MessageBox.Show("Registro Actualizado exitosamente", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        txtNombrePerfil.Focus();
+                        //MessageBox.Show("Registro Actualizado exitosamente", "Actualización", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     }
                     else
                     {
@@ -160,8 +163,7 @@ namespace FumiCont.Formularios.Administracion
                     else
                     {
                         GestionPerfiles = null;
-                        txtNombrePerfil.Focus();
-                        //MessageBox.Show("Error al crear registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                        MessageBox.Show("Error al crear registro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                     }
 
 

@@ -78,7 +78,7 @@ namespace FumiCont.Formularios.Maestras
 
         private void llenaGrilla()
         {
-            var productos = DatabaseQueryLDB.GetListaProductos(true, false, false);
+            var productos = DatabaseHelper.Read<Productos>().ToList();
             dtgProductos.DataSource = productos;
         }
 
@@ -191,7 +191,7 @@ namespace FumiCont.Formularios.Maestras
         {
             if (e.RowIndex >= 0)
             {
-                Gestionproducto = DatabaseQueryLDB.getProductoxId(Convert.ToInt32(dtgProductos.Rows[e.RowIndex].Cells["ProductoId"].Value.ToString()));
+                Gestionproducto = DatabaseHelper.Read<Productos>().Where(x => x.ProductoId == Convert.ToInt32(dtgProductos.Rows[e.RowIndex].Cells["ProductoId"].Value.ToString())).FirstOrDefault();
 
                 txtNombreProducto.Text = Gestionproducto.Descripcion;
                 txtCodigoProducto.Text = Gestionproducto.Referencia;

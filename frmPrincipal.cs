@@ -1,6 +1,7 @@
 ﻿using FumiCont.Database;
 using FumiCont.Formularios.Administracion;
 using FumiCont.Formularios.Maestras;
+using FumiCont.Formularios.Operacion;
 using FumiCont.Properties;
 using FumiCont.Utilidades;
 using Microsoft.VisualBasic;
@@ -216,20 +217,20 @@ namespace FumiCont
                         }
                         break;
                     }
-                //    case "ENTRADAS DE ALMACEN":
-                //        {
-                //            if (clsConnection.blnVentanasEnbebidas)
-                //            {
-                //                frmEntradaAlmacen objFormulario = new frmEntradaAlmacen();
-                //                cargaFormulario(objFormulario);
-                //            }
-                //            else
-                //            {
-                //                frmEntradaAlmacen FrmUsuarios = new frmEntradaAlmacen();
-                //                FrmUsuarios.Show();
-                //            }
-                //            break;
-                //        }
+                case "CONTROL FUMIGACION":
+                    {
+                        if (clsConnection.blnVentanasEnbebidas)
+                        {
+                            frmControlFumigacion objFormulario = new frmControlFumigacion();
+                            cargaFormulario(objFormulario);
+                        }
+                        else
+                        {
+                            frmControlFumigacion FrmUsuarios = new frmControlFumigacion();
+                            FrmUsuarios.Show();
+                        }
+                        break;
+                    }
                 case "EMPLEADOS":
                     {
                         if (clsConnection.blnVentanasEnbebidas)
@@ -456,20 +457,6 @@ namespace FumiCont
             }
         }
 
-        private void EquivalenciasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if (clsConnection.blnVentanasEnbebidas)
-            //{
-            //    frmEntradaAlmacen objFormulario = new frmEntradaAlmacen();
-            //    cargaFormulario(objFormulario);
-            //}
-            //else
-            //{
-            //    frmEntradaAlmacen objFormulario = new frmEntradaAlmacen();
-            //    objFormulario.Show();
-            //}
-        }
-
         private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (clsConnection.blnVentanasEnbebidas)
@@ -679,6 +666,20 @@ namespace FumiCont
             else
             {
                 frmProductos objFormulario = new frmProductos();
+                objFormulario.Show();
+            }
+        }
+
+        private void ControlFumigacionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (clsConnection.blnVentanasEnbebidas)
+            {
+                frmControlFumigacion objFormulario = new frmControlFumigacion();
+                cargaFormulario(objFormulario);
+            }
+            else
+            {
+                frmControlFumigacion objFormulario = new frmControlFumigacion();
                 objFormulario.Show();
             }
         }

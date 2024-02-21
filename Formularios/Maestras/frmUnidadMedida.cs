@@ -36,7 +36,7 @@ namespace FumiCont.Formularios.Maestras
 
         private void llenaGrilla()
         {
-            dtgUnidadMedida.DataSource = DatabaseQueryLDB.GetListaUnidadMedida(true, false, false); ;
+            dtgUnidadMedida.DataSource = DatabaseHelper.Read<UnidadMedida>().ToList();
         }
 
         private void limpiaCampos()
@@ -53,9 +53,9 @@ namespace FumiCont.Formularios.Maestras
             if (e.RowIndex >= 0)
             {
 
-                GestionUnidadMedida = DatabaseQueryLDB.getUnidadMedidaxId(Convert.ToInt32(dtgUnidadMedida.Rows[e.RowIndex].Cells["MedidaId"].Value.ToString()));
+                GestionUnidadMedida = DatabaseHelper.Read<UnidadMedida>().Where(x => x.MedidaId == Convert.ToInt32(dtgUnidadMedida.Rows[e.RowIndex].Cells["MedidaId"].Value.ToString())).FirstOrDefault();
                 txtNombreMedida.Text = GestionUnidadMedida.NombreMedida;
-                txtNotacion.Text=GestionUnidadMedida.Notacion;
+                txtNotacion.Text = GestionUnidadMedida.Notacion;
                 if (GestionUnidadMedida.IsDeleted)
                 {
                     rbnActivo.Checked = false;

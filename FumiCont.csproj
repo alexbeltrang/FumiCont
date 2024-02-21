@@ -86,6 +86,8 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseHelper.cs" />
     <Compile Include="Database\DatabaseQueryLDB.cs" />
+    <Compile Include="Entidades\ControlFumigacionDetalle.cs" />
+    <Compile Include="Entidades\ControlFumigacionEncabezado.cs" />
     <Compile Include="Entidades\Cultivo.cs" />
     <Compile Include="Entidades\Empleado.cs" />
     <Compile Include="Entidades\Lote.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Entidades\PerfilModulo.cs" />
     <Compile Include="Entidades\Productos.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
+    <Compile Include="Entidades\TipoControl.cs" />
     <Compile Include="Entidades\UnidadMedida.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Formularios\Administracion\frmAsignaModulosPerfil.cs">
@@ -150,6 +153,12 @@
     <Compile Include="Formularios\Maestras\frmUnidadMedida.Designer.cs">
       <DependentUpon>frmUnidadMedida.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\frmControlFumigacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\frmControlFumigacion.Designer.cs">
+      <DependentUpon>frmControlFumigacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Maestras\frmUnidadMedida.resx">
       <DependentUpon>frmUnidadMedida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\frmControlFumigacion.resx">
+      <DependentUpon>frmControlFumigacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>

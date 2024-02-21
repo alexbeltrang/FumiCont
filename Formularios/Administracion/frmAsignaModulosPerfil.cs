@@ -36,7 +36,8 @@ namespace FumiCont.Formularios.Administracion
             perfiles.PerfilId = 0;
             perfiles.NombrePerfil = "Seleccione...";
 
-            List<Perfil> Listperfiles = DatabaseQueryLDB.getListaPerfilesCombos();
+            List<Perfil> Listperfiles = DatabaseHelper.Read<Perfil>().Where(x => x.isDelete == false).ToList();
+
             Listperfiles.Add(perfiles);
             Listperfiles = Listperfiles.OrderBy(y => y.PerfilId).ToList();
 

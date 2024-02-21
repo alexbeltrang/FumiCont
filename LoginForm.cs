@@ -1,6 +1,7 @@
 ﻿using FumiCont.Database;
 using FumiCont.Entidades;
 using FumiCont.Utilidades;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,6 +35,7 @@ namespace FumiCont
         private void creaBaseLocal()
         {
             DatabaseHelper.Create<Perfil>();
+            DatabaseHelper.Create<TipoControl>();
             DatabaseHelper.Create<Lote>();
             DatabaseHelper.Create<Cultivo>();
             DatabaseHelper.Create<Productos>();
@@ -42,6 +44,30 @@ namespace FumiCont
             DatabaseHelper.Create<Modulo>();
             DatabaseHelper.Create<PerfilModulo>();
             DatabaseHelper.Create<Usuario>();
+            DatabaseHelper.Create<ControlFumigacionEncabezado>();
+            DatabaseHelper.Create<ControlFumigacionDetalle>();
+
+
+
+            var control = DatabaseHelper.Read<TipoControl>().Where(x => x.NombreTipoControl == "Fertilización").FirstOrDefault();
+
+            if (control is null)
+            {
+                DatabaseHelper.Insert<TipoControl>(new TipoControl
+                {
+                    NombreTipoControl = "Fertilización",
+                    IsDeleted = false
+                });
+            }
+            var controlPlaga = DatabaseHelper.Read<TipoControl>().Where(x => x.NombreTipoControl == "Control Plagas").FirstOrDefault();
+            if (controlPlaga is null)
+            {
+                DatabaseHelper.Insert<TipoControl>(new TipoControl
+                {
+                    NombreTipoControl = "Control Plagas",
+                    IsDeleted = false
+                });
+            }
         }
 
         private void OK_Click(object sender, EventArgs e)

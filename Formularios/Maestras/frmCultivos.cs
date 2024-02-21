@@ -34,7 +34,7 @@ namespace FumiCont.Formularios.Maestras
 
         private void llenaGrilla()
         {
-            List<Cultivo> Cultivos = DatabaseQueryLDB.getListaCultivosAll(true, false, false);
+            List<Cultivo> Cultivos = DatabaseHelper.Read<Cultivo>().ToList();
             List<Cultivo> CultivosMasterEdit = new List<Cultivo>();
             foreach (var itemCultivo in Cultivos)
             {
@@ -59,7 +59,7 @@ namespace FumiCont.Formularios.Maestras
             if (e.RowIndex >= 0)
             {
 
-                GestionCultivos = DatabaseQueryLDB.getCultivoxId(Convert.ToInt32(dtgCultivos.Rows[e.RowIndex].Cells["CultivoId"].Value.ToString()));
+                GestionCultivos = DatabaseHelper.Read<Cultivo>().Where(x => x.CultivoId == Convert.ToInt32(dtgCultivos.Rows[e.RowIndex].Cells["CultivoId"].Value.ToString())).FirstOrDefault();
                 txtNombreCultivo.Text = GestionCultivos.NombreCultivo;
 
                 if (GestionCultivos.isDelete)

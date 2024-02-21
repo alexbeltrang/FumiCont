@@ -37,7 +37,7 @@ namespace FumiCont.Formularios.Maestras
         private void llenaGrilla()
         {
             Proveedor clsProveedores = new Proveedor();
-            List<Proveedor> proveedores = DatabaseQueryLDB.GetListaProveedores(true, false, false);
+            List<Proveedor> proveedores = DatabaseHelper.Read<Proveedor>().ToList();
             dtgProveedores.DataSource = proveedores;
         }
 
@@ -54,7 +54,7 @@ namespace FumiCont.Formularios.Maestras
         {
             if (e.RowIndex >= 0)
             {
-                GestionProveedor = DatabaseQueryLDB.getProveedorxId(Convert.ToInt32(dtgProveedores.Rows[e.RowIndex].Cells["ProveedorId"].Value.ToString()));
+                GestionProveedor = DatabaseHelper.Read<Proveedor>().Where(x => x.ProveedorId == Convert.ToInt32(dtgProveedores.Rows[e.RowIndex].Cells["ProveedorId"].Value.ToString())).FirstOrDefault();
                 txtDireccion.Text = GestionProveedor.DireccionProveedor;
                 txtNombreProveedor.Text = GestionProveedor.NombreProveedor;
                 txtTelefonoCelular.Text = GestionProveedor.TelefonoCelular;

@@ -117,5 +117,19 @@ namespace FumiCont.Database
             }
             return result;
         }
+
+        public static List<T> Read<T>() where T : new()
+        {
+            List<T> items;
+            using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            {
+                conn.CreateTable<T>();
+                items = conn.Table<T>().ToList();
+
+            }
+            return items;
+        }
+
+
     }
 }
