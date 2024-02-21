@@ -29,6 +29,20 @@ namespace FumiCont.Database
             return result;
         }
 
+        public static object InsertOther<T>(T item)
+        {
+            bool result = false;
+            using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+            {
+                conn.CreateTable<T>();
+                int rows = conn.Insert(item);
+                if (rows > 0)
+                {
+                    return item;
+                }
+            }
+            return result;
+        }
         public static bool Insert<T>(T item, out T objetoaux)
         {
             bool result = false;

@@ -30,6 +30,7 @@ namespace FumiCont
             var appsettings = ConfigurationManager.AppSettings;
             this.BackColor = ColorTranslator.FromHtml(appsettings["color"]);
             strConexion = appsettings["BDSQL"];
+            clsConnection.listaProductos = DatabaseHelper.Read<Productos>().Where(x => x.IsDelete == false).ToList();
         }
 
         private void creaBaseLocal()

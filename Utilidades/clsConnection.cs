@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using FumiCont.Entidades;
 
 namespace FumiCont.Utilidades
 {
@@ -29,6 +30,8 @@ namespace FumiCont.Utilidades
         public static string strReferenciaProducto;
         public static string strNombreProdBuscar;
 
+
+        public static List<Productos> listaProductos;
 
 
         String mstrConnectionString;  /* '= System.Configuration.ConfigurationSettings.AppSettings("db")*/
