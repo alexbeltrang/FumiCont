@@ -69,6 +69,15 @@ namespace FumiCont
                     IsDeleted = false
                 });
             }
+            var controlDesintoxicacion = DatabaseHelper.Read<TipoControl>().Where(x => x.NombreTipoControl == "Desintoxicación").FirstOrDefault();
+            if (controlDesintoxicacion is null)
+            {
+                DatabaseHelper.Insert<TipoControl>(new TipoControl
+                {
+                    NombreTipoControl = "Desintoxicación",
+                    IsDeleted = false
+                });
+            }
         }
 
         private void OK_Click(object sender, EventArgs e)

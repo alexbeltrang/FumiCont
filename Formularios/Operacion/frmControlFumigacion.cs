@@ -105,7 +105,7 @@ namespace FumiCont.Formularios.Operacion
 
         private void llenaGrilla()
         {
-            dtgProductos.DataSource = clsConnection.listaProductos;
+            dtgProductos.DataSource = clsConnection.listaProductos.OrderBy(x => x.Descripcion).ToList(); 
         }
 
         private void llenaGrillaDetalle()
@@ -125,7 +125,7 @@ namespace FumiCont.Formularios.Operacion
         private void txtProductoBusq_TextChanged(object sender, EventArgs e)
         {
             List<Productos> listaFilt = clsConnection.listaProductos.Where(x => x.Descripcion.Contains(txtProductoBusq.Text.ToUpper())).ToList();
-            dtgProductos.DataSource = listaFilt;
+            dtgProductos.DataSource = listaFilt.OrderBy(x => x.Descripcion).ToList();
         }
 
         private void dtgProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
