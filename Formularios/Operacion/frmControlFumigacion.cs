@@ -19,6 +19,7 @@ namespace FumiCont.Formularios.Operacion
     {
         int intCodigoProducto = 0;
         Int64 intCodigoPadreControl = 0;
+        ControlFumigacionDetalle fumigacionDetalle = new ControlFumigacionDetalle();
         public frmControlFumigacion()
         {
             InitializeComponent();
@@ -26,11 +27,13 @@ namespace FumiCont.Formularios.Operacion
 
         private void ControlFumigacion_Load(object sender, EventArgs e)
         {
+            fumigacionDetalle = null;
             var appsettings = ConfigurationManager.AppSettings;
             this.BackColor = ColorTranslator.FromHtml(appsettings["color"]);
             lblProductoSeleccionado.Text = string.Empty;
             cargaCombos();
             llenaGrilla();
+            ocultaPanel(false);
         }
 
         private void cargaCombos()
@@ -84,6 +87,19 @@ namespace FumiCont.Formularios.Operacion
             cboTipoControl.ValueMember = "TipoControlId";
             cboTipoControl.DisplayMember = "NombreTipoControl";
             cboTipoControl.SelectedIndex = 0;
+
+
+            UnidadMedida UnidadMedidas = new UnidadMedida();
+            UnidadMedidas.MedidaId = 0;
+            UnidadMedidas.NombreMedida = "Seleccione...";
+            List<UnidadMedida> ListUnidadMedidas = DatabaseHelper.Read<UnidadMedida>().Where(x => x.IsDeleted == false).ToList();
+            ListUnidadMedidas.Add(UnidadMedidas);
+            ListUnidadMedidas = ListUnidadMedidas.OrderBy(y => y.MedidaId).ToList();
+
+            cboUnidadMedida.DataSource = ListUnidadMedidas;
+            cboUnidadMedida.ValueMember = "MedidaId";
+            cboUnidadMedida.DisplayMember = "NombreMedida";
+            cboUnidadMedida.SelectedIndex = 0;
         }
 
 
@@ -91,6 +107,13 @@ namespace FumiCont.Formularios.Operacion
         {
             dtgProductos.DataSource = clsConnection.listaProductos;
         }
+
+        private void llenaGrillaDetalle()
+        {
+            dtgDetalleControl.DataSource = DatabaseQueryLDB.getDetalleControl(intCodigoPadreControl);
+        }
+
+
         private void txtTotalCanecas_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -107,10 +130,20 @@ namespace FumiCont.Formularios.Operacion
 
         private void dtgProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            intCodigoProducto = Convert.ToInt32(dtgProductos.Rows[e.RowIndex].Cells["ProductoId"].Value.ToString());
-            lblProductoSeleccionado.Text = dtgProductos.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
-            txtProductoBusq.Text = string.Empty;
-            txtCantidadProd.Focus();
+            if (fumigacionDetalle == null)
+            {
+                intCodigoProducto = Convert.ToInt32(dtgProductos.Rows[e.RowIndex].Cells["ProductoId"].Value.ToString());
+                lblProductoSeleccionado.Text = dtgProductos.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
+                txtProductoBusq.Text = string.Empty;
+                txtCantidadProd.Focus();
+            }
+            else
+            {
+                fumigacionDetalle.ProductoId = Convert.ToInt32(dtgProductos.Rows[e.RowIndex].Cells["ProductoId"].Value.ToString());
+                lblProductoSeleccionado.Text = dtgProductos.Rows[e.RowIndex].Cells["Descripcion"].Value.ToString();
+                txtProductoBusq.Text = string.Empty;
+                txtCantidadProd.Focus();
+            }
         }
 
         private void txtCantidadProd_KeyPress(object sender, KeyPressEventArgs e)
@@ -119,19 +152,36 @@ namespace FumiCont.Formularios.Operacion
             {
                 e.Handled = true;
             }
+            if (fumigacionDetalle != null)
+            {
+                fumigacionDetalle.CantidadProducto = Convert.ToDecimal(txtCantidadProd.Text);
+            }
         }
 
         private void btnRegistraDetalle_Click(object sender, EventArgs e)
         {
             if (validaCamposDetalle())
             {
-                DatabaseHelper.Insert<ControlFumigacionDetalle>(new ControlFumigacionDetalle
+                if (fumigacionDetalle == null)
                 {
-                    CantidadProducto = Convert.ToInt32(txtCantidadProd.Text),
-                    ControlFumigacionId = intCodigoPadreControl,
-                    ProductoId = intCodigoProducto,
-                    TipoControlId = Convert.ToInt32(cboTipoControl.SelectedValue.ToString())
-                });
+                    DatabaseHelper.Insert<ControlFumigacionDetalle>(new ControlFumigacionDetalle
+                    {
+                        CantidadProducto = Convert.ToDecimal(txtCantidadProd.Text),
+                        ControlFumigacionId = intCodigoPadreControl,
+                        ProductoId = intCodigoProducto,
+                        TipoControlId = Convert.ToInt32(cboTipoControl.SelectedValue.ToString()),
+                        MedidaId = Convert.ToInt32(cboUnidadMedida.SelectedValue.ToString())
+                    });
+                    fumigacionDetalle = null;
+                }
+                else
+                {
+                    DatabaseHelper.Update<ControlFumigacionDetalle>(fumigacionDetalle);
+                    fumigacionDetalle = null;
+                }
+                llenaGrillaDetalle();
+                limpiaCamposDetalle();
+                txtProductoBusq.Focus();
             }
         }
 
@@ -179,7 +229,7 @@ namespace FumiCont.Formularios.Operacion
                     ControlFumigacionEncabezado controlFumigacionEncabezado = new ControlFumigacionEncabezado();
                     controlFumigacionEncabezado = (ControlFumigacionEncabezado)res;
                     intCodigoPadreControl = ((ControlFumigacionEncabezado)res).ControlFumigacionId;
-                    //controlFumigacionEncabezado.ControlFumigacionId;
+                    ocultaPanel(true);
                 }
             }
         }
@@ -213,6 +263,72 @@ namespace FumiCont.Formularios.Operacion
             else
             {
                 return true;
+            }
+        }
+
+        private void ocultaPanel(bool estado)
+        {
+            pnlRegDetalle.Visible = estado;
+            panel2.Visible = estado;
+            dtgProductos.Visible = estado;
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            ocultaPanel(false);
+            intCodigoPadreControl = 0;
+            limpiaCamposEnzabezado();
+        }
+
+        private void limpiaCamposDetalle()
+        {
+            txtProductoBusq.Text = string.Empty;
+            lblProductoSeleccionado.Text = string.Empty;
+            txtCantidadProd.Text = string.Empty;
+            cboTipoControl.SelectedIndex = 0;
+            cboUnidadMedida.SelectedIndex = 0;
+        }
+        private void limpiaCamposEnzabezado()
+        {
+            cboLote.SelectedIndex = 0;
+            cboCultivo.SelectedIndex = 0;
+            cboEmpleado.SelectedIndex = 0;
+            txtTotalCanecas.Text = string.Empty;
+        }
+
+        private void dtgDetalleControl_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            fumigacionDetalle = DatabaseHelper.Read<ControlFumigacionDetalle>().Where(x => x.ControlFumigacionDetId == Convert.ToInt32(dtgDetalleControl.Rows[e.RowIndex].Cells["ControlFumigacionDetId"].Value.ToString())).FirstOrDefault();
+            if (fumigacionDetalle != null)
+            {
+                txtCantidadProd.Text = fumigacionDetalle.CantidadProducto.ToString();
+                cboTipoControl.SelectedValue = Convert.ToInt64(fumigacionDetalle.TipoControlId.ToString());
+                cboUnidadMedida.SelectedValue = Convert.ToInt32(fumigacionDetalle.MedidaId.ToString());
+                Productos producto = DatabaseHelper.Read<Productos>().Where(x => x.ProductoId == fumigacionDetalle.ProductoId).FirstOrDefault();
+                lblProductoSeleccionado.Text = producto.Descripcion;
+                txtProductoBusq.Focus();
+            }
+        }
+
+        private void cboTipoControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fumigacionDetalle != null)
+            {
+                if (cboTipoControl.SelectedValue != null)
+                {
+                    fumigacionDetalle.TipoControlId = Convert.ToInt32(cboTipoControl.SelectedValue.ToString());
+                }
+            }
+        }
+
+        private void cboUnidadMedida_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (fumigacionDetalle != null)
+            {
+                if (cboUnidadMedida.SelectedValue != null)
+                {
+                    fumigacionDetalle.MedidaId = Convert.ToInt32(cboUnidadMedida.SelectedValue.ToString());
+                }
             }
         }
     }

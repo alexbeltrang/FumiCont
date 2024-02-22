@@ -20,5 +20,7 @@ namespace FumiCont.Entidades
         public decimal CantidadProducto { get; set; }
         [ForeignKey(typeof(TipoControl))]
         public int TipoControlId { get; set; }
+        [ForeignKey(typeof(UnidadMedida))]
+        public int MedidaId { get; set; }
     }
 }

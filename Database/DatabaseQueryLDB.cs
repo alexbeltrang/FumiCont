@@ -176,5 +176,30 @@ namespace FumiCont.Database
                 return false;
             }
         }
+
+        public static List<RespuestaDetalleControl> getDetalleControl(long CodigoEncabezado)
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+                {
+                    var query = new SQLiteCommand(conn);
+                    query.CommandText = "select DET.ControlFumigacionDetId, PRD.Descripcion, TPC.NombreTipoControl, DET.CantidadProducto, UNM.NombreMedida from ControlFumigacionDetalles DET INNER JOIN Productos PRD ON DET.ProductoId = PRD.ProductoId INNER JOIN TipoControles TPC ON TPC.TipoControlId = DET.TipoControlId INNER JOIN UnidadMedida UNM ON UNM.MedidaId = DET.MedidaId where ControlFumigacionId = " + CodigoEncabezado.ToString();
+                    var result = query.ExecuteQuery<RespuestaDetalleControl>().ToList();
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
