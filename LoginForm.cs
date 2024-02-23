@@ -35,7 +35,11 @@ namespace FumiCont
 
         private void creaBaseLocal()
         {
+            DatabaseHelper.Create<Departamentos>();
+            DatabaseHelper.Create<Ciudades>();
             DatabaseHelper.Create<Perfil>();
+            DatabaseHelper.Create<CondicionPago>();
+            DatabaseHelper.Create<Clientes>();
             DatabaseHelper.Create<TipoControl>();
             DatabaseHelper.Create<Lote>();
             DatabaseHelper.Create<Cultivo>();
@@ -47,7 +51,9 @@ namespace FumiCont
             DatabaseHelper.Create<Usuario>();
             DatabaseHelper.Create<ControlFumigacionEncabezado>();
             DatabaseHelper.Create<ControlFumigacionDetalle>();
-
+            DatabaseHelper.Create<Clientes>();
+            DatabaseHelper.Create<EncabezadoFactura>();
+            DatabaseHelper.Create<DetalleFactura>();
 
 
             var control = DatabaseHelper.Read<TipoControl>().Where(x => x.NombreTipoControl == "Fertilización").FirstOrDefault();

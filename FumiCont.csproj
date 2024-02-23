@@ -86,10 +86,16 @@
   <ItemGroup>
     <Compile Include="Database\DatabaseHelper.cs" />
     <Compile Include="Database\DatabaseQueryLDB.cs" />
+    <Compile Include="Entidades\Ciudades.cs" />
+    <Compile Include="Entidades\Clientes.cs" />
+    <Compile Include="Entidades\CondicionPago.cs" />
     <Compile Include="Entidades\ControlFumigacionDetalle.cs" />
     <Compile Include="Entidades\ControlFumigacionEncabezado.cs" />
     <Compile Include="Entidades\Cultivo.cs" />
+    <Compile Include="Entidades\Departamentos.cs" />
+    <Compile Include="Entidades\DetalleFactura.cs" />
     <Compile Include="Entidades\Empleado.cs" />
+    <Compile Include="Entidades\EncabezadoFactura.cs" />
     <Compile Include="Entidades\Lote.cs" />
     <Compile Include="Entidades\Modulo.cs" />
     <Compile Include="Entidades\Perfil.cs" />
@@ -220,6 +226,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Entidades\ArchivosparaCargaInicial\DIVIPOLA_Municipios.xlsx" />
     <None Include="Entidades\BkpBaseLocal\FumiCtrl.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
