@@ -165,6 +165,12 @@
     <Compile Include="Formularios\Operacion\frmControlFumigacion.Designer.cs">
       <DependentUpon>frmControlFumigacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Operacion\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Operacion\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Operacion\frmControlFumigacion.resx">
       <DependentUpon>frmControlFumigacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Operacion\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
