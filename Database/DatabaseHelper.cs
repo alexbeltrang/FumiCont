@@ -53,7 +53,7 @@ namespace FumiCont.Database
                 int rows = conn.Insert(item);
                 if (rows > 0)
                 {
-                    objeto = item;
+                         objeto = item;
                     result = true;
                 }
             }

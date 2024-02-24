@@ -16,16 +16,11 @@ namespace FumiCont.Entidades
 
         [ForeignKey(typeof(Lote))]
         public int LoteId { get; set; }
-        public virtual Lote Lote { get; set; }
 
         [ForeignKey(typeof(Cultivo))]
         public int CultivoId { get; set; }
-        public virtual Cultivo Cultivo { get; set; }
-
         [ForeignKey(typeof(Empleado))]
         public int EmpleadoId { get; set; }
-        public virtual Empleado Empleado { get; set; }
-
         public DateTime FechaControlFumigacion { get; set; }
         public int CantidadCanecas { get; set; }
         public bool isDelete { get; set; }

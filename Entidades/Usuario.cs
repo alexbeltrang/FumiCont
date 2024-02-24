@@ -27,6 +27,5 @@ namespace FumiCont.Entidades
         public bool isDelete { get; set; }
         [ForeignKey(typeof(Perfil))]
         public int PerfilId { get; set; }
-        public virtual Perfil Perfil { get; set; }
     }
 }
