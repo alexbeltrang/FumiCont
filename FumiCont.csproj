@@ -111,6 +111,12 @@
     <Compile Include="Formularios\Administracion\frmAsignaModulosPerfil.Designer.cs">
       <DependentUpon>frmAsignaModulosPerfil.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Administracion\frmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Administracion\frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Administracion\frmEmpleados.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +200,9 @@
     <Compile Include="Utilidades\FunctionsEncrip.cs" />
     <EmbeddedResource Include="Formularios\Administracion\frmAsignaModulosPerfil.resx">
       <DependentUpon>frmAsignaModulosPerfil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Administracion\frmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Administracion\frmPerfiles.resx">
       <DependentUpon>frmPerfiles.cs</DependentUpon>

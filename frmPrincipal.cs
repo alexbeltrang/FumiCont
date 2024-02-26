@@ -371,20 +371,20 @@ namespace FumiCont
                         }
                         break;
                     }
-                    //    case "REPORTE SIIGO":
-                    //        {
-                    //            if (clsConnection.blnVentanasEnbebidas)
-                    //            {
-                    //                frmGeneraInformeSIIGO objFormulario = new frmGeneraInformeSIIGO();
-                    //                cargaFormulario(objFormulario);
-                    //            }
-                    //            else
-                    //            {
-                    //                frmGeneraInformeSIIGO frmGeneraInformeSIIGO = new frmGeneraInformeSIIGO();
-                    //                frmGeneraInformeSIIGO.Show();
-                    //            }
-                    //            break;
-                    //        }
+                case "CLIENTES":
+                    {
+                        if (clsConnection.blnVentanasEnbebidas)
+                        {
+                            frmClientes objFormulario = new frmClientes();
+                            cargaFormulario(objFormulario);
+                        }
+                        else
+                        {
+                            frmClientes frmClientes = new frmClientes();
+                            frmClientes.Show();
+                        }
+                        break;
+                    }
             }
         }
 
@@ -682,6 +682,26 @@ namespace FumiCont
                 frmControlFumigacion objFormulario = new frmControlFumigacion();
                 objFormulario.Show();
             }
+        }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (clsConnection.blnVentanasEnbebidas)
+            {
+                frmClientes objFormulario = new frmClientes();
+                cargaFormulario(objFormulario);
+            }
+            else
+            {
+                frmClientes objFormulario = new frmClientes();
+                objFormulario.Show();
+            }
+        }
+
+        private void condicionesPagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

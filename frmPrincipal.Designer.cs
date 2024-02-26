@@ -60,6 +60,8 @@ namespace FumiCont
             this.treeMenu = new System.Windows.Forms.TreeView();
             this.pnlFormulario = new System.Windows.Forms.Panel();
             this.tmrAlertasStock = new System.Windows.Forms.Timer(this.components);
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condicionesPagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +125,7 @@ namespace FumiCont
             this.consultasToolStripMenuItem});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1592, 28);
+            this.MenuStrip1.Size = new System.Drawing.Size(1592, 30);
             this.MenuStrip1.TabIndex = 9;
             this.MenuStrip1.Text = "MenuStrip1";
             // 
@@ -179,23 +181,25 @@ namespace FumiCont
             this.UnidadesMedidaToolStripMenuItem,
             this.empleadosToolStripMenuItem,
             this.cultivosToolStripMenuItem,
-            this.aperturaDeLotesToolStripMenuItem});
+            this.aperturaDeLotesToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.condicionesPagoToolStripMenuItem});
             this.MaestrasToolStripMenuItem.Name = "MaestrasToolStripMenuItem";
-            this.MaestrasToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
+            this.MaestrasToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.MaestrasToolStripMenuItem.Text = "&Maestras";
             this.MaestrasToolStripMenuItem.Visible = false;
             // 
             // productosToolStripMenuItem
             // 
             this.productosToolStripMenuItem.Name = "productosToolStripMenuItem";
-            this.productosToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.productosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.productosToolStripMenuItem.Text = "&Productos";
             this.productosToolStripMenuItem.Click += new System.EventHandler(this.productosToolStripMenuItem_Click);
             // 
             // ProveedoresToolStripMenuItem
             // 
             this.ProveedoresToolStripMenuItem.Name = "ProveedoresToolStripMenuItem";
-            this.ProveedoresToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.ProveedoresToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.ProveedoresToolStripMenuItem.Text = "P&roveedores";
             this.ProveedoresToolStripMenuItem.Visible = false;
             this.ProveedoresToolStripMenuItem.Click += new System.EventHandler(this.ProveedoresToolStripMenuItem_Click);
@@ -203,7 +207,7 @@ namespace FumiCont
             // UnidadesMedidaToolStripMenuItem
             // 
             this.UnidadesMedidaToolStripMenuItem.Name = "UnidadesMedidaToolStripMenuItem";
-            this.UnidadesMedidaToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.UnidadesMedidaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.UnidadesMedidaToolStripMenuItem.Text = "&Unidades Medida";
             this.UnidadesMedidaToolStripMenuItem.Visible = false;
             this.UnidadesMedidaToolStripMenuItem.Click += new System.EventHandler(this.UnidadesMedidaToolStripMenuItem_Click);
@@ -211,7 +215,7 @@ namespace FumiCont
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.empleadosToolStripMenuItem.Text = "&Empleados";
             this.empleadosToolStripMenuItem.Visible = false;
             this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
@@ -219,14 +223,14 @@ namespace FumiCont
             // cultivosToolStripMenuItem
             // 
             this.cultivosToolStripMenuItem.Name = "cultivosToolStripMenuItem";
-            this.cultivosToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.cultivosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cultivosToolStripMenuItem.Text = "&Cultivos";
             this.cultivosToolStripMenuItem.Click += new System.EventHandler(this.cultivosToolStripMenuItem_Click);
             // 
             // aperturaDeLotesToolStripMenuItem
             // 
             this.aperturaDeLotesToolStripMenuItem.Name = "aperturaDeLotesToolStripMenuItem";
-            this.aperturaDeLotesToolStripMenuItem.Size = new System.Drawing.Size(210, 26);
+            this.aperturaDeLotesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aperturaDeLotesToolStripMenuItem.Text = "&Apertura de Lotes";
             this.aperturaDeLotesToolStripMenuItem.Visible = false;
             this.aperturaDeLotesToolStripMenuItem.Click += new System.EventHandler(this.aperturaDeLotesToolStripMenuItem_Click);
@@ -252,7 +256,7 @@ namespace FumiCont
             // salidasDeInventarioToolStripMenuItem
             // 
             this.salidasDeInventarioToolStripMenuItem.Name = "salidasDeInventarioToolStripMenuItem";
-            this.salidasDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(232, 26);
+            this.salidasDeInventarioToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.salidasDeInventarioToolStripMenuItem.Text = "&Salidas de Inventario";
             this.salidasDeInventarioToolStripMenuItem.Visible = false;
             this.salidasDeInventarioToolStripMenuItem.Click += new System.EventHandler(this.salidasDeInventarioToolStripMenuItem_Click);
@@ -319,7 +323,7 @@ namespace FumiCont
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.treeMenu.Location = new System.Drawing.Point(0, 32);
-            this.treeMenu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeMenu.Margin = new System.Windows.Forms.Padding(4);
             this.treeMenu.Name = "treeMenu";
             this.treeMenu.Size = new System.Drawing.Size(302, 761);
             this.treeMenu.TabIndex = 10;
@@ -331,7 +335,7 @@ namespace FumiCont
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFormulario.Location = new System.Drawing.Point(308, 32);
-            this.pnlFormulario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlFormulario.Margin = new System.Windows.Forms.Padding(4);
             this.pnlFormulario.Name = "pnlFormulario";
             this.pnlFormulario.Size = new System.Drawing.Size(1283, 759);
             this.pnlFormulario.TabIndex = 11;
@@ -339,6 +343,20 @@ namespace FumiCont
             // tmrAlertasStock
             // 
             this.tmrAlertasStock.Tick += new System.EventHandler(this.tmrAlertasStock_Tick);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.clientesToolStripMenuItem.Text = "C&lientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // condicionesPagoToolStripMenuItem
+            // 
+            this.condicionesPagoToolStripMenuItem.Name = "condicionesPagoToolStripMenuItem";
+            this.condicionesPagoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.condicionesPagoToolStripMenuItem.Text = "C&ondiciones Pago";
+            this.condicionesPagoToolStripMenuItem.Click += new System.EventHandler(this.condicionesPagoToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -350,7 +368,7 @@ namespace FumiCont
             this.Controls.Add(this.MenuStrip1);
             this.Controls.Add(this.StatusStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1606, 863);
             this.Name = "frmPrincipal";
@@ -400,5 +418,7 @@ namespace FumiCont
         private System.Windows.Forms.ToolStripMenuItem cultivosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aperturaDeLotesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem condicionesPagoToolStripMenuItem;
     }
 }
