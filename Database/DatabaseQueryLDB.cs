@@ -201,5 +201,30 @@ namespace FumiCont.Database
                 return null;
             }
         }
+
+        public static List<RespuestaDetalleFactura> getDetalleVenta(long CodigoEncabezado)
+        {
+            try
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(dbFile))
+                {
+                    var query = new SQLiteCommand(conn);
+                    query.CommandText = "select DET.DetalleId, CUL.NombreCultivo,  DET.Cantidad, UNM.NombreMedida from DetalleFactura DET INNER JOIN Cultivos CUL ON DET.CultivoId = CUL.CultivoId INNER JOIN UnidadMedida UNM ON UNM.MedidaId = DET.MedidaId where EncabezadoId = " + CodigoEncabezado.ToString();
+                    var result = query.ExecuteQuery<RespuestaDetalleFactura>().ToList();
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

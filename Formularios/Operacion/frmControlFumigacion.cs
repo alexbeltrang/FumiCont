@@ -105,7 +105,7 @@ namespace FumiCont.Formularios.Operacion
 
         private void llenaGrilla()
         {
-            dtgProductos.DataSource = clsConnection.listaProductos.OrderBy(x => x.Descripcion).ToList(); 
+            dtgProductos.DataSource = clsConnection.listaProductos.OrderBy(x => x.Descripcion).ToList();
         }
 
         private void llenaGrillaDetalle()
@@ -124,7 +124,7 @@ namespace FumiCont.Formularios.Operacion
 
         private void txtProductoBusq_TextChanged(object sender, EventArgs e)
         {
-            List<Productos> listaFilt = clsConnection.listaProductos.Where(x => x.Descripcion.Contains(txtProductoBusq.Text.ToUpper())).ToList();
+            List<Productos> listaFilt = clsConnection.listaProductos.Where(x => x.Descripcion.ToUpper().Contains(txtProductoBusq.Text.ToUpper())).ToList();
             dtgProductos.DataSource = listaFilt.OrderBy(x => x.Descripcion).ToList();
         }
 
@@ -282,6 +282,7 @@ namespace FumiCont.Formularios.Operacion
 
         private void limpiaCamposDetalle()
         {
+            intCodigoProducto = 0;
             txtProductoBusq.Text = string.Empty;
             lblProductoSeleccionado.Text = string.Empty;
             txtCantidadProd.Text = string.Empty;

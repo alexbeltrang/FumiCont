@@ -196,6 +196,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ModelosRespuestas\RespuestaDetalleControl.cs" />
+    <Compile Include="ModelosRespuestas\RespuestaDetalleFactura.cs" />
     <Compile Include="ModelosRespuestas\RespuestaModuloPadre.cs" />
     <Compile Include="ModelosRespuestas\RespuestaUsuarioLogin.cs" />
     <Compile Include="ModelosRespuestas\UsuariosMasterEdit.cs" />

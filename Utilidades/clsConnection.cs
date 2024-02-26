@@ -32,6 +32,8 @@ namespace FumiCont.Utilidades
 
 
         public static List<Productos> listaProductos;
+        public static List<Clientes> listaClientes;
+        public static List<Cultivo> listaCultivos;
 
 
         String mstrConnectionString;  /* '= System.Configuration.ConfigurationSettings.AppSettings("db")*/

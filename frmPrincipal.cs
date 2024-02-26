@@ -245,20 +245,20 @@ namespace FumiCont
                         }
                         break;
                     }
-                //    case "SALIDAS DE INVENTARIO":
-                //        {
-                //            if (clsConnection.blnVentanasEnbebidas)
-                //            {
-                //                frmSalidasInventario objFormulario = new frmSalidasInventario();
-                //                cargaFormulario(objFormulario);
-                //            }
-                //            else
-                //            {
-                //                frmSalidasInventario FrmEmpleados = new frmSalidasInventario();
-                //                FrmEmpleados.Show();
-                //            }
-                //            break;
-                //        }
+                case "REGISTRO VENTAS":
+                    {
+                        if (clsConnection.blnVentanasEnbebidas)
+                        {
+                            frmVentas objFormulario = new frmVentas();
+                            cargaFormulario(objFormulario);
+                        }
+                        else
+                        {
+                            frmVentas FrmEmpleados = new frmVentas();
+                            FrmEmpleados.Show();
+                        }
+                        break;
+                    }
                 case "REGISTRO LOTES":
                     {
                         if (clsConnection.blnVentanasEnbebidas)
@@ -473,16 +473,16 @@ namespace FumiCont
 
         private void salidasDeInventarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (clsConnection.blnVentanasEnbebidas)
-            //{
-            //    frmSalidasInventario objFormulario = new frmSalidasInventario();
-            //    cargaFormulario(objFormulario);
-            //}
-            //else
-            //{
-            //    frmSalidasInventario objFormulario = new frmSalidasInventario();
-            //    objFormulario.Show();
-            //}
+            if (clsConnection.blnVentanasEnbebidas)
+            {
+                frmVentas objFormulario = new frmVentas();
+                cargaFormulario(objFormulario);
+            }
+            else
+            {
+                frmVentas objFormulario = new frmVentas();
+                objFormulario.Show();
+            }
         }
 
         private void aperturaDeLotesToolStripMenuItem_Click(object sender, EventArgs e)

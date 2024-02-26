@@ -15,12 +15,14 @@ namespace FumiCont.Entidades
         public long DetalleId { get; set; }
         [ForeignKey(typeof(EncabezadoFactura))]
         public long EncabezadoId { get; set; }
-        [ForeignKey(typeof(Productos))]
-        public int ProductoId { get; set; }
+        [ForeignKey(typeof(Cultivo))]
+        public int CultivoId { get; set; }
         public decimal Cantidad { get; set; }
+        [ForeignKey(typeof(UnidadMedida))]
+        public int MedidaId { get; set; }
         public decimal ValorUnitario { get; set; }
         public decimal ValorBruto { get; set; }
-        public decimal ValorIva { get; set; }
+        public decimal PorcIva { get; set; }
         public decimal ValorRetefuente { get; set; }
         public decimal ValorTotal { get; set; }
         public bool isDelete { get; set; }

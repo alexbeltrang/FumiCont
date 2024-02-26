@@ -19,6 +19,7 @@ namespace FumiCont.Entidades
         [ForeignKey(typeof(Clientes))]
         public int ClienteId { get; set; }
         public decimal PorcentajeRetefuente { get; set; }
+        [MaxLength(500)]
         public string Observaciones { get; set; }
         public bool isDelete { get; set; }
 

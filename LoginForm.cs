@@ -31,6 +31,8 @@ namespace FumiCont
             this.BackColor = ColorTranslator.FromHtml(appsettings["color"]);
             strConexion = appsettings["BDSQL"];
             clsConnection.listaProductos = DatabaseHelper.Read<Productos>().Where(x => x.IsDelete == false).ToList();
+            clsConnection.listaClientes = DatabaseHelper.Read<Clientes>().Where(x => x.isDelete == false).ToList();
+            clsConnection.listaCultivos = DatabaseHelper.Read<Cultivo>().Where(x => x.isDelete == false).ToList();
         }
 
         private void creaBaseLocal()
