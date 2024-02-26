@@ -21,6 +21,9 @@ namespace FumiCont.Entidades
         public decimal PorcentajeRetefuente { get; set; }
         [MaxLength(500)]
         public string Observaciones { get; set; }
+        [MaxLength(50)]
+        public string DocSoporteCliente { get; set; }
+        public DateTime fechaEntregaCliente { get; set; }
         public bool isDelete { get; set; }
 
     }

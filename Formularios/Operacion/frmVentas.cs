@@ -89,7 +89,10 @@ namespace FumiCont.Formularios.Operacion
                     CondicionId = Convert.ToInt32(cboCondicionPago.SelectedValue.ToString()),
                     FechaFactura = dtpFechaControl.Value,
                     Observaciones = txtObservaciones.Text,
-                    PorcentajeRetefuente = Convert.ToDecimal(txtRetefuente.Text)
+                    PorcentajeRetefuente = Convert.ToDecimal(txtRetefuente.Text),
+                    DocSoporteCliente = txtDocSoporteCliente.Text,
+                    fechaEntregaCliente = dtpFechaEntregaCliente.Value,
+                    isDelete = false
                 });
                 if (res != null)
                 {
@@ -119,6 +122,12 @@ namespace FumiCont.Formularios.Operacion
             {
                 txtRetefuente.Focus();
                 MessageBox.Show("Ingrese el porcentaje de retención en la fuente que le aplicarán a la venta", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return false;
+            }
+            else if (txtDocSoporteCliente.Text == string.Empty || txtDocSoporteCliente.Text == null)
+            {
+                txtDocSoporteCliente.Focus();
+                MessageBox.Show("Ingrese el número de documento soporte que el cliente entrega", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 return false;
             }
             else
