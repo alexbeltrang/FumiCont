@@ -228,11 +228,12 @@ namespace FumiCont.Formularios.Operacion
 
         private bool grabaDetalle()
         {
-            decimal valorBruto = Convert.ToDecimal(txtValorUnitario.Text) * Convert.ToDecimal(txtCantidadProd.Text);
-            decimal valorRetefuente = txtRetefuente.Text == "0" ? 0 : ((valorBruto * Convert.ToDecimal(txtRetefuente.Text)) / 100);
-            decimal valorIva = txtIva.Text == string.Empty || txtIva.Text == "0" || txtIva.Text == null ? 0 : (valorBruto * (1 + (Convert.ToDecimal(txtIva.Text) / 100)));
+
             if (validaCamposDetalle())
             {
+                decimal valorBruto = Convert.ToDecimal(txtValorUnitario.Text) * Convert.ToDecimal(txtCantidadProd.Text);
+                decimal valorRetefuente = txtRetefuente.Text == "0" ? 0 : ((valorBruto * Convert.ToDecimal(txtRetefuente.Text)) / 100);
+                decimal valorIva = txtIva.Text == string.Empty || txtIva.Text == "0" || txtIva.Text == null ? 0 : (valorBruto * (1 + (Convert.ToDecimal(txtIva.Text) / 100)));
                 try
                 {
                     if (detalleFactura == null)
