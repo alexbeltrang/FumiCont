@@ -315,20 +315,20 @@ namespace FumiCont
                 //            }
                 //            break;
                 //        }
-                //    case "CONSULTA CONSUMOS":
-                //        {
-                //            if (clsConnection.blnVentanasEnbebidas)
-                //            {
-                //                frmConsultaMovimientoProd objFormulario = new frmConsultaMovimientoProd();
-                //                cargaFormulario(objFormulario);
-                //            }
-                //            else
-                //            {
-                //                frmConsultaMovimientoProd FrmProveedores = new frmConsultaMovimientoProd();
-                //                FrmProveedores.Show();
-                //            }
-                //            break;
-                //        }
+                case "CONDICIONES PAGO":
+                    {
+                        if (clsConnection.blnVentanasEnbebidas)
+                        {
+                            frmCondicionesPago objFormulario = new frmCondicionesPago();
+                            cargaFormulario(objFormulario);
+                        }
+                        else
+                        {
+                            frmCondicionesPago FrmProveedores = new frmCondicionesPago();
+                            FrmProveedores.Show();
+                        }
+                        break;
+                    }
                 case "ASIGNACION MODULOS PERFIL":
                     {
                         if (clsConnection.blnVentanasEnbebidas)
@@ -701,7 +701,16 @@ namespace FumiCont
 
         private void condicionesPagoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (clsConnection.blnVentanasEnbebidas)
+            {
+                frmCondicionesPago objFormulario = new frmCondicionesPago();
+                cargaFormulario(objFormulario);
+            }
+            else
+            {
+                frmCondicionesPago objFormulario = new frmCondicionesPago();
+                objFormulario.Show();
+            }
         }
     }
 }

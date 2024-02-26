@@ -135,6 +135,12 @@
     <Compile Include="Formularios\Administracion\frmUsuarios.Designer.cs">
       <DependentUpon>frmUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Maestras\frmCondicionesPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Maestras\frmCondicionesPago.Designer.cs">
+      <DependentUpon>frmCondicionesPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Maestras\frmCultivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Administracion\frmPerfiles.resx">
       <DependentUpon>frmPerfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Maestras\frmCondicionesPago.resx">
+      <DependentUpon>frmCondicionesPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Maestras\frmCultivos.resx">
       <DependentUpon>frmCultivos.cs</DependentUpon>
